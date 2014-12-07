@@ -29,7 +29,7 @@ class SessionsController extends \BaseController {
 		));
 
 		if($attempt) {
-			return Redirect::intended('admin');	
+			return Redirect::action('AdminController@index');	
 		}  else {
 			dd('problem');
 		}

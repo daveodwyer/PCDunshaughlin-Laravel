@@ -152,5 +152,4 @@ class AdminController extends \BaseController {
 
 	}
 
-
 }

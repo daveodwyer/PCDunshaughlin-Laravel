@@ -11,31 +11,27 @@
 |
 */
 
-// Link to page permalinks
+// Include CSRF protection against all POST, PUT and PATCH requests
+Route::when('*', 'csrf', ['post', 'put', 'patch']);
 
 
+// Admin
+Route::get('admin', 'AdminController@index')->before('auth');
+Route::resource('admin', 'AdminController');
+
+// Pages
+Route::resource('page', 'PageController', ['only' => ['show']]);
+Route::get('{page}', array('uses' => 'PageController@show'));
+
+// Log and Logout
+Route::resource('sessions', 'SessionsController', ['only' => ['create', 'store', 'destroy']]);
+Route::get('login', 'SessionsController@create')->before('guest');
+Route::get('logout', 'SessionsController@destroy')->before('auth');
+
+// treat / as /home
 Route::get('/', ['as' => 'home', function() {
 
 	$page = Page::where('slug', '=', '')->firstOrFail();
 	return View::make('public.index')->withPage($page);
 
 }]);
-
-Route::get('login', 'SessionsController@create')->before('guest');
-Route::get('logout', 'SessionsController@destroy')->before('auth');
-
-
-Route::get('admin', 'AdminController@index')->before('auth');
-
-Route::resource('admin', 'AdminController');
-Route::resource('sessions', 'SessionsController', ['only' => ['create', 'store', 'destroy']]);
-Route::resource('page', 'PageController');
-
-Route::get('{page}', array('uses' => 'PageController@show'));
-
-Route::resource('maintheme', 'PageController');
-
-Route::group(['prefix' => 'mainsite'], function() {
-	Route::get('{name}', ['uses' => 'PageController@show']);
-});
-
