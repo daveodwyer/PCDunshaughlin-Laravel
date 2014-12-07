@@ -15,32 +15,29 @@ class ViewLibrary {
 
 		}
 
-		$files = scandir($full_path);
-		
-		// unset first and second items, ('.', '..')
-		unset($files[0]);
-		unset($files[1]);
+		$available_views = [];
 
-		if(($key = array_search('includes', $files)) !== false) {
-			unset($files[$key]);
-		}
+		foreach(File::allFiles($full_path) as $partial) {
 
-		foreach($files as $name => $file) {
-			// unset original name
-			unset($files[$name]);
+			$relative_path = $partial->getRelativePath();
 
-			// obtain name from the filename
-			$view_title = str_replace('.blade.php', '', $file);
-			$view_title = ucfirst($view_title);
+			if($relative_path !== 'includes') {
 
-			$file = str_replace('.blade.php', '', $file);
+				$view_file_name = $partial->getRelativePathname();
+				$view_file_name = str_replace('.blade.php', '', $view_file_name);
+				$view_file_name = $sub_path . '.' . $view_file_name;
 
-			// set new name to the files array
-			$files[$sub_path . '.' . $file] = $view_title;
+				$display_name = explode('.', $view_file_name);
+				$display_name = $display_name[1];
+
+				$available_views[$view_file_name] = $display_name;
+
+			}
+
 		}
 
 
-		return $files;
+		return $available_views;
 
 
 	}
