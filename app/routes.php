@@ -14,24 +14,25 @@
 // Include CSRF protection against all POST, PUT and PATCH requests
 Route::when('*', 'csrf', ['post', 'put', 'patch']);
 
+// treat / as /home
+Route::get('/', ['as' => 'home', function() {
+
+	$page = Page::where('slug', '=', 'home')->firstOrFail();
+	return View::make('public.index')->withPage($page);
+
+}]);
 
 // Admin
-Route::get('admin', 'AdminController@index')->before('auth');
 Route::resource('admin', 'AdminController');
+Route::get('admin', 'AdminController@index')->before('auth');
+
+
+// Log and Logout
+Route::resource('sessions', 'SessionsController', ['only' => ['create', 'store', 'destroy']]);
+Route::get('login', ['uses' => 'SessionsController@create'])->before('guest');
+Route::get('logout', 'SessionsController@destroy')->before('auth');
+
 
 // Pages
 Route::resource('page', 'PageController', ['only' => ['show']]);
 Route::get('{page}', array('uses' => 'PageController@show'));
-
-// Log and Logout
-Route::resource('sessions', 'SessionsController', ['only' => ['create', 'store', 'destroy']]);
-Route::get('login', 'SessionsController@create')->before('guest');
-Route::get('logout', 'SessionsController@destroy')->before('auth');
-
-// treat / as /home
-Route::get('/', ['as' => 'home', function() {
-
-	$page = Page::where('slug', '=', '')->firstOrFail();
-	return View::make('public.index')->withPage($page);
-
-}]);
