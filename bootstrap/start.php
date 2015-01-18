@@ -26,7 +26,7 @@ $app = new Illuminate\Foundation\Application;
 
 $env = $app->detectEnvironment(array(
 
-	'local' => array('DAVE-LINUX', 'DaveAttic-PC', 'dave-mint')
+	'local' => array('DAVE-LINUX', 'DaveAttic-PC', 'dave-linuxpc')
 
 ));
 

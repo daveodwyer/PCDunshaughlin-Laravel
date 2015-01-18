@@ -1,16 +1,12 @@
 <?php
 
-class AdminController extends \BaseController {
+class ManipulatePageController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
 	 *
 	 * @return Response
 	 */
-
-	function __construct() {
-		 $this->beforeFilter('auth');
-	}
 
 	public function index()
 	{
@@ -41,7 +37,7 @@ class AdminController extends \BaseController {
 		// get all inputs
 		$input = Input::all();
 
-		// instatiate the page
+		// instantiate the page
 		$page = new Page();
 
 		// apply the values to the page object
@@ -56,7 +52,7 @@ class AdminController extends \BaseController {
 		$page->save();
 
 		// redirect to the admin index
-		return Redirect::route('admin.index');
+		return Redirect::route('admin.page.index');
 	}
 
 
@@ -115,7 +111,7 @@ class AdminController extends \BaseController {
 			$page->slug = $input['slug'];
 			$page->update();
 
-			return Redirect::route('admin.index');
+			return Redirect::route('admin.page.index');
 
 		} else {
 			die("Nothing to update");
@@ -135,7 +131,7 @@ class AdminController extends \BaseController {
 
 			$page->destroy($id);
 
-			return Redirect::route('admin.index');
+			return Redirect::route('admin.page.index');
 
 		}
 	}

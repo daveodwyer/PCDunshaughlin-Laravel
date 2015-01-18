@@ -14,14 +14,14 @@
 		<div class="row">
 			<div class="icon-bar five-up small-12">
 
-				<a class="item" href="{{ URL::route('admin.index') }}"><i class="fi-home"></i></a>
-				<a class="item" href="{{ URL::route('admin.create') }}"><i class="fi-page-add"></i></a>
+				<a class="item" href="{{ URL::route('admin.page.index') }}"><i class="fi-home"></i></a>
+				<a class="item" href="{{ URL::route('admin.page.create') }}"><i class="fi-page-add"></i></a>
 
 				<a class="item"><i class=""></i>
 
 
-				<a class="item" href="{{ URL::route('admin.settings') }}"><i class="fa fa-cogs"></i></a>
-				<a class="item" href="{{ URL::route('admin.create') }}"><i class="fi-like"></i></a>
+				<a class="item" href="{{ URL::route('admin.page.create') }}"><i class="fa fa-cogs"></i></a>
+				<a class="item" href="{{ URL::route('admin.page.create') }}"><i class="fi-like"></i></a>
 			</div>
 
 		</div>

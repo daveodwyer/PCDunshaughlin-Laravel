@@ -11,8 +11,8 @@
 
 .navbar-inverse .navbar-nav>.active>a { background-color: inherit; color: #fff;}
 .navbar-inverse .navbar-nav>.active>a:hover { background-color: inherit; border-bottom: 2px solid red; }
-.navbar-inverse .navbar-nav>li>a { background-color: inherit; }
-.navbar-inverse .navbar-nav>li>a:hover { background-color: #444;  border-bottom: 2px solid #fff; }
+.navbar-inverse .navbar-nav>li>a { background-color: inherit; border-bottom: 2px solid; border-color: #444; }
+.navbar-inverse .navbar-nav>li>a:hover { background-color: #444;  border-color: #fff; }
 
 /* Mobile Nav */
 #navbar ul.nav li { text-indent: 30px;}

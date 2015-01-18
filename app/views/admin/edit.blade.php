@@ -9,7 +9,7 @@
 
 	<div class="large-11 small-11 small-centered columns large-centered">
 
-		{{ Form::model($page, ['route' => ['admin.update', $page->id], 'method' => 'put']) }}
+		{{ Form::model($page, ['route' => ['admin.page.update', $page->id], 'method' => 'put']) }}
 
 			<div class="row">
 				<div class="small-3 large-2 columns">

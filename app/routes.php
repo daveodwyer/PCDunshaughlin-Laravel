@@ -22,10 +22,15 @@ Route::get('/', ['as' => 'home', function() {
 
 }]);
 
-// Admin
-Route::resource('admin', 'AdminController');
-Route::get('admin', 'AdminController@index')->before('auth');
 
+Route::group(array('prefix' => 'admin', 'before' => 'auth'), function() {
+
+	// ManipulatePageController
+	Route::resource('page', 'ManipulatePageController');
+	Route::get('page', 'ManipulatePageController@index')->before('auth');
+
+
+});
 
 // Log and Logout
 Route::resource('sessions', 'SessionsController', ['only' => ['create', 'store', 'destroy']]);

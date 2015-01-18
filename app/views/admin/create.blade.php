@@ -9,7 +9,7 @@
 
 	<div class="large-11 small-11 small-centered columns large-centered">
 
-		{{ Form::open(['route' => 'admin.store']) }}
+		{{ Form::open(['route' => 'admin.page.store']) }}
 
 			<div class="row">
 				<div class="small-3 large-2 columns">
