@@ -1,6 +1,7 @@
 var map;
 var TILE_SIZE = 256;
-var chicago = new google.maps.LatLng(53.512983, -6.543329);
+var meath = new google.maps.LatLng(53.512083, -6.543329);
+var meath_infotile = new google.maps.LatLng(53.512900, -6.543329);
 
 function bound(value, opt_min, opt_max) {
   if (opt_min != null) value = Math.max(value, opt_min);
@@ -54,7 +55,7 @@ MercatorProjection.prototype.fromPointToLatLng = function(point) {
 function createInfoWindowContent() {
   var numTiles = 1 << map.getZoom();
   var projection = new MercatorProjection();
-  var worldCoordinate = projection.fromLatLngToPoint(chicago);
+  var worldCoordinate = projection.fromLatLngToPoint(meath);
   var pixelCoordinate = new google.maps.Point(
       worldCoordinate.x * numTiles,
       worldCoordinate.y * numTiles);
@@ -64,7 +65,7 @@ function createInfoWindowContent() {
 
   return [
     '<b>PCDunshaughlin</b>',
-    '18 Greenane,',
+    'Greenane,',
     'Dunshaughlin,',
     'Co. Meath',
     '',
@@ -74,22 +75,35 @@ function createInfoWindowContent() {
 
 function initialize() {
   var mapOptions = {
-    zoom: 16,
-    center: chicago
+    zoom: 14,
+    clickable:true,
+    center: meath
   };
 
   map = new google.maps.Map(document.getElementById('map-canvas'),
       mapOptions);
 
+      circ = new google.maps.Circle({
+        map: map,
+        center: meath,
+        strokeOpacity: 0,
+        fillColor: "#FF0000",
+        clickable: true
+      });
+
+  circ.setRadius(150);
+
   var coordInfoWindow = new google.maps.InfoWindow();
   coordInfoWindow.setContent(createInfoWindowContent());
-  coordInfoWindow.setPosition(chicago);
+  coordInfoWindow.setPosition(meath_infotile);
   coordInfoWindow.open(map);
 
   google.maps.event.addListener(map, 'zoom_changed', function() {
     coordInfoWindow.setContent(createInfoWindowContent());
     coordInfoWindow.open(map);
   });
+
+//marker.setPosition(results[0].geometry.location);
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
