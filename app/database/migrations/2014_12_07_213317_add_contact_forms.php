@@ -15,7 +15,7 @@ class AddContactForms extends Migration {
 		Schema::create('contact_forms', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->string('name')->unique();
+			$table->string('name');
 			$table->text('email');
 			$table->string('phone');
 			$table->string('query');

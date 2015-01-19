@@ -8,7 +8,8 @@
     @section('content')
         <div id="generic-main" class="container">
 
-            <form class="form-horizontal">
+            <!-- <form class="form-horizontal"> -->
+            {{ Form::open(array('action' => array('contact.store'), 'class' => 'form-horizontal' ) ) }}
                 <fieldset>
 
                     <h1>Contact Us</h1>

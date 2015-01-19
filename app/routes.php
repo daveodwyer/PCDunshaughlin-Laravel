@@ -32,6 +32,9 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function() {
 
 });
 
+// Contact Form
+Route::resource('contact', 'ContactFormController', ['only' => ['store']]);
+
 // Log and Logout
 Route::resource('sessions', 'SessionsController', ['only' => ['create', 'store', 'destroy']]);
 Route::get('login', ['uses' => 'SessionsController@create'])->before('guest');
