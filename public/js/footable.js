@@ -52,7 +52,7 @@
                 return groups;
             },
             createDetail: function (element, data, createGroupedDetail, separatorChar, classes) {
-                /// <summary>This function is used by FooTable to generate the detail view seen when expanding a collapsed row.</summary>
+                /// <summary>This function is used by FooTableIncs to generate the detail view seen when expanding a collapsed row.</summary>
                 /// <param name="element">This is the div that contains all the detail row information, anything could be added to it.</param>
                 /// <param name="data">
                 ///  This is an array of objects containing the cell information for the current row.
@@ -98,21 +98,21 @@
                 detailShow: 'footable-detail-show'
             },
             triggers: {
-                initialize: 'footable_initialize',                      //trigger this event to force FooTable to reinitialize
-                resize: 'footable_resize',                              //trigger this event to force FooTable to resize
-                redraw: 'footable_redraw',                              //trigger this event to force FooTable to redraw
-                toggleRow: 'footable_toggle_row',                       //trigger this event to force FooTable to toggle a row
-                expandFirstRow: 'footable_expand_first_row',            //trigger this event to force FooTable to expand the first row
-                expandAll: 'footable_expand_all',                       //trigger this event to force FooTable to expand all rows
-                collapseAll: 'footable_collapse_all'                    //trigger this event to force FooTable to collapse all rows
+                initialize: 'footable_initialize',                      //trigger this event to force FooTableIncs to reinitialize
+                resize: 'footable_resize',                              //trigger this event to force FooTableIncs to resize
+                redraw: 'footable_redraw',                              //trigger this event to force FooTableIncs to redraw
+                toggleRow: 'footable_toggle_row',                       //trigger this event to force FooTableIncs to toggle a row
+                expandFirstRow: 'footable_expand_first_row',            //trigger this event to force FooTableIncs to expand the first row
+                expandAll: 'footable_expand_all',                       //trigger this event to force FooTableIncs to expand all rows
+                collapseAll: 'footable_collapse_all'                    //trigger this event to force FooTableIncs to collapse all rows
             },
             events: {
-                alreadyInitialized: 'footable_already_initialized',     //fires when the FooTable has already been initialized
-                initializing: 'footable_initializing',                  //fires before FooTable starts initializing
-                initialized: 'footable_initialized',                    //fires after FooTable has finished initializing
-                resizing: 'footable_resizing',                          //fires before FooTable resizes
-                resized: 'footable_resized',                            //fires after FooTable has resized
-                redrawn: 'footable_redrawn',                            //fires after FooTable has redrawn
+                alreadyInitialized: 'footable_already_initialized',     //fires when the FooTableIncs has already been initialized
+                initializing: 'footable_initializing',                  //fires before FooTableIncs starts initializing
+                initialized: 'footable_initialized',                    //fires after FooTableIncs has finished initializing
+                resizing: 'footable_resizing',                          //fires before FooTableIncs resizes
+                resized: 'footable_resized',                            //fires after FooTableIncs has resized
+                redrawn: 'footable_redrawn',                            //fires after FooTableIncs has redrawn
                 breakpoint: 'footable_breakpoint',                      //fires inside the resize function, when a breakpoint is hit
                 columnData: 'footable_column_data',                     //fires when setting up column data. Plugins should use this event to capture their own info about a column
                 rowDetailUpdating: 'footable_row_detail_updating',      //fires before a detail row is updated
@@ -120,7 +120,7 @@
                 rowCollapsed: 'footable_row_collapsed',                 //fires when a row is collapsed
                 rowExpanded: 'footable_row_expanded',                   //fires when a row is expanded
                 rowRemoved: 'footable_row_removed',                     //fires when a row is removed
-                reset: 'footable_reset'                                 //fires when FooTable is reset
+                reset: 'footable_reset'                                 //fires when FooTableIncs is reset
             },
             debug: false, // Whether or not to log information to the console.
             log: null
@@ -143,7 +143,7 @@
 
         plugins: {
             _validate: function (plugin) {
-                ///<summary>Simple validation of the <paramref name="plugin"/> to make sure any members called by FooTable actually exist.</summary>
+                ///<summary>Simple validation of the <paramref name="plugin"/> to make sure any members called by FooTableIncs actually exist.</summary>
                 ///<param name="plugin">The object defining the plugin, this should implement a string property called "name" and a function called "init".</param>
 
                 if (!$.isFunction(plugin)) {
@@ -164,9 +164,9 @@
             },
             registered: [], // An array containing all registered plugins.
             register: function (plugin, options) {
-                ///<summary>Registers a <paramref name="plugin"/> and its default <paramref name="options"/> with FooTable.</summary>
+                ///<summary>Registers a <paramref name="plugin"/> and its default <paramref name="options"/> with FooTableIncs.</summary>
                 ///<param name="plugin">The plugin that should implement a string property called "name" and a function called "init".</param>
-                ///<param name="options">The default options to merge with the FooTable's base options.</param>
+                ///<param name="options">The default options to merge with the FooTableIncs's base options.</param>
 
                 if (w.footable.plugins._validate(plugin)) {
                     w.footable.plugins.registered.push(plugin);
@@ -186,8 +186,8 @@
               return loaded;
             },
             init: function (instance) {
-                ///<summary>Loops through all registered plugins and calls the "init" method supplying the current <paramref name="instance"/> of the FooTable as the first parameter.</summary>
-                ///<param name="instance">The current instance of the FooTable that the plugin is being initialized for.</param>
+                ///<summary>Loops through all registered plugins and calls the "init" method supplying the current <paramref name="instance"/> of the FooTableIncs as the first parameter.</summary>
+                ///<param name="instance">The current instance of the FooTableIncs that the plugin is being initialized for.</param>
 
                 for (var i = 0; i < instance.plugins.length; i++) {
                     try {
@@ -272,7 +272,7 @@
             trg = opt.triggers,
             indexOffset = 0;
 
-        // This object simply houses all the timers used in the FooTable.
+        // This object simply houses all the timers used in the FooTableIncs.
         ft.timers = {
             resize: new Timer(),
             register: function (name) {
@@ -287,7 +287,7 @@
             w.footable.plugins.init(ft);
 
             if ($table.hasClass(cls.loaded)) {
-                //already loaded FooTable for the table, so don't init again
+                //already loaded FooTableIncs for the table, so don't init again
                 ft.raise(evt.alreadyInitialized);
                 return;
             }
@@ -316,51 +316,51 @@
 
             $table
                 .unbind(trg.initialize)
-                //bind to FooTable initialize trigger
+                //bind to FooTableIncs initialize trigger
                 .bind(trg.initialize, function () {
                     //remove previous "state" (to "force" a resize)
                     $table.removeData('footable_info');
                     $table.data('breakpoint', '');
 
-                    //trigger the FooTable resize
+                    //trigger the FooTableIncs resize
                     $table.trigger(trg.resize);
 
                     //remove the loading class
                     $table.removeClass(cls.loading);
 
-                    //add the FooTable and loaded class
+                    //add the FooTableIncs and loaded class
                     $table.addClass(cls.loaded).addClass(cls.main);
 
                     //raise the initialized event
                     ft.raise(evt.initialized);
                 })
                 .unbind(trg.redraw)
-                //bind to FooTable redraw trigger
+                //bind to FooTableIncs redraw trigger
                 .bind(trg.redraw, function () {
                     ft.redraw();
                 })
                 .unbind(trg.resize)
-                //bind to FooTable resize trigger
+                //bind to FooTableIncs resize trigger
                 .bind(trg.resize, function () {
                     ft.resize();
                 })
                 .unbind(trg.expandFirstRow)
-                //bind to FooTable expandFirstRow trigger
+                //bind to FooTableIncs expandFirstRow trigger
                 .bind(trg.expandFirstRow, function () {
                     $table.find(opt.toggleSelector).first().not('.' + cls.detailShow).trigger(trg.toggleRow);
                 })
                 .unbind(trg.expandAll)
-                //bind to FooTable expandFirstRow trigger
+                //bind to FooTableIncs expandFirstRow trigger
                 .bind(trg.expandAll, function () {
                     $table.find(opt.toggleSelector).not('.' + cls.detailShow).trigger(trg.toggleRow);
                 })
                 .unbind(trg.collapseAll)
-                //bind to FooTable expandFirstRow trigger
+                //bind to FooTableIncs expandFirstRow trigger
                 .bind(trg.collapseAll, function () {
                     $table.find('.' + cls.detailShow).trigger(trg.toggleRow);
                 });
 
-            //trigger a FooTable initialize
+            //trigger a FooTableIncs initialize
             $table.trigger(trg.initialize);
 
             //bind to window resize
@@ -786,7 +786,7 @@
             return e;
         };
 
-        //reset the state of FooTable
+        //reset the state of FooTableIncs
         ft.reset = function() {
             var $table = $(ft.table);
             $table.removeData('footable_info')

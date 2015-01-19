@@ -3,12 +3,11 @@
 	<head>
 		<title>{{ $page->title }} | PCDunshaughlin</title>
 		<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />
-		<link rel="stylesheet" href="{{ asset('css/custom.css') }}" />
+		{{ Minify::stylesheet('/css/custom.css') }}
 		<link rel="stylesheet" href="{{ asset('css/owl.carousel.css') }}" />
 		{{ HTML::script('js/jquery-1.11.1.min.js') }}
 		{{ HTML::script('js/bootstrap.min.js') }}
-		{{ HTML::script('js/owl.carousel.js') }}
-		{{ HTML::script('js/custom.js') }}
+		{{ Minify::javascript(array('/js/owl.carousel.js', '/js/custom.js')) }}
 
 		@yield('additional_header_assets')
 
