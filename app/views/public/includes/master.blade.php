@@ -5,16 +5,13 @@
 		<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />
 		{{ Minify::stylesheet('/css/custom.css') }}
 		<link rel="stylesheet" href="{{ asset('css/owl.carousel.css') }}" />
-		{{ HTML::script('js/jquery-1.11.1.min.js') }}
-		{{ HTML::script('js/bootstrap.min.js') }}
-		{{ Minify::javascript(array('/js/owl.carousel.js', '/js/custom.js')) }}
 
 		@yield('additional_header_assets')
 
 	</head>
 
 	<body>
-		<!-- THANKS FOR PEEKING! :) -->
+		<!-- THANKS FOR PEEKING! :) http://www.daveodwyer.ie -->
 	    <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
 	      <div class="container">
 	        <div class="navbar-header">
@@ -33,23 +30,8 @@
 	          	@foreach( Page::getNavigation() as $page_name => $path )
 	          		<li><a href="{{ $path }}">{{ $page_name }}</a></li>
 	          	@endforeach
-	            <!-- <li class="active"><a href="#">Home</a></li>
-	            <li><a href="">About</a></li>
-	            <li><a href="">Services and Pricing</a></li>
-	            <li><a href="">Location</a></li>
-
-	            <li><a href="">Contact</a></li>
-	            -->
 	          </ul>
 	        </div><!--/.nav-collapse -->
-	      	<script>
-	      	
-      		$(document).ready(function() {
-      			      		positionFB();
-
-      		});
-
-	      </script>
 	      </div>
 	    </nav>
 
@@ -87,6 +69,14 @@
 		  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.0";
 		  fjs.parentNode.insertBefore(js, fjs);
 		}(document, 'script', 'facebook-jssdk'));</script>
+
+		{{ HTML::script('js/jquery-1.11.1.min.js') }}
+		{{ HTML::script('js/bootstrap.min.js') }}
+		{{ Minify::javascript(array('/js/owl.carousel.js', '/js/custom.js')) }}
+
+		@yield('additional_footer_assets')
+
+
 	</body>
 </html>
 

@@ -1,10 +1,5 @@
 @extends('public.includes.master')
 
-    @section('additional_header_assets')
-        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
-        {{ HTML::script('js/googlemaps.js') }}
-    @stop
-
     @section('content')
     	<div class="container">
 			<div id="homepage-main">
@@ -44,3 +39,8 @@
 			    <div class="col-lg-12" style="height:200px" id="map-canvas"></div>
 		</div>
 	@stop
+
+@section('additional_footer_assets')
+	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+	{{ Minify::javascript('/js/googlemaps.js') }}
+@stop

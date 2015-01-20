@@ -1,15 +1,10 @@
 @extends('public.includes.master')
 
-    @section('additional_header_assets')
-        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
-        {{ HTML::script('js/googlemaps.js') }}
-    @stop
-
     @section('content')
         <div id="generic-main" class="container">
 
             <!-- <form class="form-horizontal"> -->
-            {{ Form::open(array('action' => array('contact.store'), 'class' => 'form-horizontal' ) ) }}
+            {{ Form::open(array('action' => array('contact.store'), 'id' => 'contact-form', 'class' => 'form-horizontal' ) ) }}
                 <fieldset>
 
                     <h1>Contact Us</h1>
@@ -18,7 +13,7 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="name">Name:</label>  
                         <div class="col-md-5">
-                            <input id="name" name="name" type="text" placeholder="Enter your name" class="form-control input-md" required="">
+                            <input id="name" name="name" type="text" placeholder="Enter your name" class="form-control input-md">
                         </div>
                     </div>
 
@@ -34,7 +29,7 @@
                     <div class="form-group">
                       <label class="col-md-4 control-label" for="phone">Contact Number:</label>  
                         <div class="col-md-5">
-                            <input id="phone" name="phone" type="text" placeholder="Enter your contact number" class="form-control input-md" required="">
+                            <input id="phone" name="phone" type="text" placeholder="Enter your contact number" class="form-control input-md">
                         </div>
                     </div>
 
@@ -59,3 +54,10 @@
     
     <div class="" style="height:200px" id="map-canvas"></div>
     @stop
+
+
+@section('additional_footer_assets')
+    {{ HTML::script('js/jquery.validate.min.js') }}
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+    {{ Minify::javascript('/js/googlemaps.js') }}
+@stop
