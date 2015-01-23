@@ -33,11 +33,9 @@
 					</div>
 			</div>
 		</div>
+		
+		<div class="" style="height:200px" id="map-canvas"></div>
 
-
-		<div class="container">
-			    <div class="col-lg-12" style="height:200px" id="map-canvas"></div>
-		</div>
 	@stop
 
 @section('additional_footer_assets')
