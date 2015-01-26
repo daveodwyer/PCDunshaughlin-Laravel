@@ -6,7 +6,7 @@ class Page extends Eloquent {
 	/**
 	*	Function used to return pages and their paths, in order
 	*
-	*	returns array
+	*	@return array
 	*/
 	public static function getNavigation() {
 
@@ -23,13 +23,14 @@ class Page extends Eloquent {
 	}
 
 	/**
-	*	Function used to return numbers between 1 and 10 that haven't aleady been chosen for a navigation order #
+	*	 Function used to return numbers between 1 and 10 that haven't already been chosen for a navigation order
 	*
-	*	returns array
+	*   @param $max_order - maximum order to return
+	*   @param $selected_val - the selected value from the order list
+	*	@return array
 	*/
 	public static function getNavigationOrders($max_order = 10, $selected_val = '') {
 
-		$navigation_orders = [];
 		$navigation_orders_taken = [];
 
 		$navigation_orders_taken_orm = self::where('nav_order', '>=', 1)->get();
@@ -51,5 +52,11 @@ class Page extends Eloquent {
 
 
 	}
+
+	/**
+	 * Function used to return validation rules to controller for Page
+	 */
+
+
 
 }

@@ -37,6 +37,8 @@ class ManipulatePageController extends \BaseController {
 		// get all inputs
 		$input = Input::all();
 
+		$rules = Page::GetValidationRpoules();
+
 		// instantiate the page
 		$page = new Page();
 
@@ -46,7 +48,10 @@ class ManipulatePageController extends \BaseController {
 		$page->slug = $input['slug'];
 		$page->view = $input['view'];
 		$page->show_in_nav = $input['show_in_nav'];
-		$page->nav_order = $input['nav_order'];
+
+		if($page->show_in_nav === 'yes') {
+			$page->nav_order = $input['nav_order'];
+		}
 
 		// save the page to the db
 		$page->save();
@@ -107,7 +112,13 @@ class ManipulatePageController extends \BaseController {
 			$page->content = $input['content'];
 			$page->view = $input['view'];
 			$page->show_in_nav = $input['show_in_nav'];
-			$page->nav_order = $input['nav_order'];
+
+			if($page->show_in_nav == 'yes') {
+				$page->nav_order = $input['nav_order'];
+			} else {
+				$page->nav_order = '';
+			}
+
 			$page->slug = $input['slug'];
 			$page->update();
 

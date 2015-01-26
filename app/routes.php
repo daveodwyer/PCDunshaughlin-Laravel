@@ -22,12 +22,13 @@ Route::get('/', ['as' => 'home', function() {
 
 }]);
 
-
 Route::group(array('prefix' => 'admin', 'before' => 'auth'), function() {
 
 	// ManipulatePageController
 	Route::resource('page', 'ManipulatePageController');
-	Route::get('page', 'ManipulatePageController@index')->before('auth');
+
+	//Route::get('/', 'ManipulatePageController@index')->before('auth');
+	Route::get('/', 'ManipulatePageController@index')->before('auth');
 
 
 });

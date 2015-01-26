@@ -121,8 +121,8 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
-		'CeesVanEgmond\Minify\MinifyServiceProvider'
-
+		'CeesVanEgmond\Minify\MinifyServiceProvider',
+		'Laracasts\Validation\ValidationServiceProvider'
 	),
 
 	/*

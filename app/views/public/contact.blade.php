@@ -11,41 +11,35 @@
 
                     <!-- Text input-->
                     <div class="form-group">
-                        <label class="col-md-4 control-label" for="name">Name:</label>  
-                        <div class="col-md-5">
-                            <input id="name" name="name" type="text" placeholder="Enter your name" class="form-control input-md">
-                        </div>
+                        {{ Form::label('name', 'Name:') }}
+                        {{ Form::text('name', Input::old('name'), ['class' => 'form-control', 'placeholder' => 'Enter your name']) }}
+                        {{ errors_for('name', $errors ) }}
                     </div>
 
                     <!-- Text input-->
                     <div class="form-group">
-                        <label class="col-md-4 control-label" for="email">Email:</label>  
-                        <div class="col-md-5">
-                            <input id="email" name="email" type="text" placeholder="Enter your email" class="form-control input-md"> 
-                        </div>
+                        {{ Form::label('email', 'Email:') }}
+                        {{ Form::text('email', Input::old('email'), ['class' => 'form-control', 'placeholder' => 'Enter your email']) }}
+                        {{ errors_for('email', $errors ) }}
                     </div>
 
                     <!-- Text input-->
                     <div class="form-group">
-                      <label class="col-md-4 control-label" for="phone">Contact Number:</label>  
-                        <div class="col-md-5">
-                            <input id="phone" name="phone" type="text" placeholder="Enter your contact number" class="form-control input-md">
-                        </div>
+                        {{ Form::label('phone', 'Contact Number:') }}
+                        {{ Form::text('phone', Input::old('phone'), ['class' => 'form-control', 'placeholder' => 'Enter your contact number']) }}
+                        {{ errors_for('phone', $errors ) }}
                     </div>
 
                     <!-- Textarea -->
                     <div class="form-group">
-                        <label class="col-md-4 control-label" for="query">Enter your query:</label>
-                        <div class="col-md-4">                     
-                            <textarea class="form-control" id="query" name="query" placeholder="Enter your query here"></textarea>
-                        </div>
+                        {{ Form::label('query', 'Enter your Query:') }}
+                        {{ Form::textarea('query', Input::old('query'), ['class' => 'form-control', 'placeholder' => 'Enter your query']) }}
+                        {{ errors_for('query', $errors ) }}
                     </div>
 
+                    <!-- Submit -->
                     <div class="form-group">
-                        <div class="col-md-4"></div>
-                        <div class="col-md-4">                     
-                            <input type="submit" name="submit" value="Send" />
-                        </div>
+                        {{ Form::submit('Submit', ['class' => 'btn btn-primary']) }}
                     </div>
 
                 </fieldset>

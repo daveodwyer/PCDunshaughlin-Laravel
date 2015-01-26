@@ -1275,7 +1275,7 @@ button::-moz-focus-inner {
 form {
   margin: 0 0 1rem; }
 
-/* Using forms within rows, we need to set some defaults */
+/* Using Forms within rows, we need to set some defaults */
 form .row .row {
   margin: 0 -0.5rem; }
   form .row .row .column,

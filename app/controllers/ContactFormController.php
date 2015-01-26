@@ -13,6 +13,20 @@ class ContactFormController extends \BaseController {
 		// get all inputs
 		$input = Input::all();
 
+		// validate data
+		$rules = [
+			'name' => 'required',
+			'email' => 'required|email',
+			'query' => 'required',
+			'phone' => 'digits_between:4,15'
+		];
+
+		$validator = Validator::make($input, $rules);
+
+		if($validator->fails()) {
+			return Redirect::back()->withInput()->withErrors($validator);
+		}
+
 		// instantiate the contact_form
 		$contact_form = new ContactForm();
 
@@ -23,22 +37,15 @@ class ContactFormController extends \BaseController {
 		$contact_form->query = $input['query'];
 		$contact_form->year = date('Y');
 
-		// save the contact_form to the db]
+		$mailer = new Mailer();
+		$mailer->sendTo('email-dave@hotmail.com', 'PCDunshaughlin Query', 'emails.enquiry', $input);
+
+		// save the contact_form to the db
 		if($contact_form->save()) {
-			return $this->redirect();
+			return Redirect::to('/contact_success');
 		}
 
 	}
-
-	/**
-	 * @return mixed
-     */
-	public function redirect() {
-
-		return Redirect::to('/contact_success');
-
-	}
-
 
 	
 }

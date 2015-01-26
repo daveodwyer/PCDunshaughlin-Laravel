@@ -38,7 +38,8 @@
 		</div>
 
 
-		{{ HTML::script("admin-assets/js/foundation.js") }}
+		{{ HTML::script("js/jquery-1.11.1.min.js") }}
+		{{ HTML::script("admin-assets/js/foundation.min.js") }}
 		{{ HTML::script("admin-assets/js/tinymce/tinymce.min.js") }}
 		<script type="text/javascript">
 		tinymce.init({
@@ -53,6 +54,8 @@
 		    toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
 		});
 		</script>
+
+		@yield('footer_scripts')
 
 	</body>
 

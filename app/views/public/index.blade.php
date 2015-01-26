@@ -33,7 +33,7 @@
 					</div>
 			</div>
 		</div>
-		
+
 		<div class="" style="height:200px" id="map-canvas"></div>
 
 	@stop
