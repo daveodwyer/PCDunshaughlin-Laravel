@@ -37,7 +37,19 @@ class ManipulatePageController extends \BaseController {
 		// get all inputs
 		$input = Input::all();
 
-		$rules = Page::GetValidationRpoules();
+		// validate data
+		$rules = [
+			'title' => 'required',
+			'content' => 'required',
+			'slug' => 'required',
+			'view' => 'required',
+		];
+
+		$validator = Validator::make($input, $rules);
+
+		if($validator->fails()) {
+			return Redirect::back()->withInput()->withErrors($validator);
+		}
 
 		// instantiate the page
 		$page = new Page();
@@ -108,6 +120,21 @@ class ManipulatePageController extends \BaseController {
 		if($page = Page::findOrFail($id)) {
 
 			$input = Input::all();
+
+			// validate data
+			$rules = [
+				'title' => 'required',
+				'content' => 'required',
+				'slug' => 'required',
+				'view' => 'required',
+			];
+
+			$validator = Validator::make($input, $rules);
+
+			if($validator->fails()) {
+				return Redirect::back()->withInput()->withErrors($validator);
+			}
+
 			$page->title = $input['title'];
 			$page->content = $input['content'];
 			$page->view = $input['view'];

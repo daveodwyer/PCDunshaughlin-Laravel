@@ -17,6 +17,7 @@
 				</div>
 				<div class="small-9 large-10 columns">
 					{{ Form::text('title') }}
+					{{ errors_for('title', $errors ) }}
 				</div>
 			</div>
 
@@ -26,6 +27,8 @@
 				</div>
 				<div class="small-9 large-10 columns">
 					{{ Form::textarea('content', null, ['name' => 'content']) }}
+					{{ errors_for('content', $errors ) }}
+
 				</div>
 			</div>
 
@@ -37,6 +40,8 @@
 				</div>
 				<div class="small-9 large-10 columns">
 					{{ Form::select('view', ViewLibrary::getViewListNames() ) }}
+					{{ errors_for('view', $errors ) }}
+
 				</div>
 			</div>
 
@@ -46,6 +51,8 @@
 				</div>
 				<div class="small-9 large-10 columns">
 					{{ Form::text('slug') }}
+					{{ errors_for('slug', $errors ) }}
+
 				</div>
 			</div>
 
