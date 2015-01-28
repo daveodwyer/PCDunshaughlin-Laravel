@@ -4,6 +4,9 @@ $(document).ready(function() {
 
         $('#contact-form').validate({
 
+            errorLabelContainer: "#error-cont ol",
+            wrapper: 'li',
+            onfocusout: false,
             rules: {
                 name : 'required',
                 email : {
@@ -25,24 +28,9 @@ $(document).ready(function() {
 
                 query : 'Please enter a query'
 
-            },
-
-            errorPlacement: function(error, element) {
-                var element_id = $(element).attr('id');
-                error.prependTo(element.parent('div'));
-            },
-
-            invalidHandler: function(event, validator) {
-
-                var errors = validator.numberOfInvalids();
-                if(errors) {
-                    return false;
-                }
-
             }
 
         });
-
 
     }
 

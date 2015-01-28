@@ -1,21 +1,23 @@
-<h1>Login Plzzz</h1>
+<head>
+	<title>Login</title>
+	<link rel="stylesheet" href="{{ asset('admin-assets/css/custom.css') }} "/>
+</head>
+<body>
 
-{{ Form::open(['route' => 'sessions.store']) }}
+	<div id="login-cont">
+		<h1 id="login-heading">Login</h1>
 
-	<ul>
-		<li>
-			{{ Form::label('email', 'email') }}
-			{{ Form::text('email') }}
-		</li>
+		<span id="login-error">{{{ Session::get('error') }}}</span>
 
-		<li>
-			{{ Form::label('password', 'password') }}
-			{{ Form::password('password') }}
-		</li>
+		{{ Form::open(['route' => 'sessions.store', 'id' => 'login']) }}
 
-		<li>
-			{{ Form::submit('Login') }}
-		</li>
-	</ul>
+		{{ Form::text('user', null, ['placeholder' => 'Username']) }}
+		{{ Form::password('password', ['placeholder' => 'Password']) }}
+		{{ Form::submit('Login') }}
 
-{{ Form::close() }}
+		{{ Form::close() }}
+
+	</div>
+
+
+</body>

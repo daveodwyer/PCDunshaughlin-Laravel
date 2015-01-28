@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "edf0bfe1e94fc90ceffde8dce938a755",
+    "hash": "57c4c87b8811df480c14944dbc9ccc84",
     "packages": [
         {
             "name": "ceesvanegmond/minify",

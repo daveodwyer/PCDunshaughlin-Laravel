@@ -24,14 +24,14 @@ class SessionsController extends \BaseController {
 		$input = Input::all();
 		
 		$attempt = Auth::attempt(array(
-			'email' => $input['email'],
+			'email' => $input['user'],
 			'password' => $input['password']
 		));
 
 		if($attempt) {
-			return Redirect::action('MainipulatePageController@index');
+			return Redirect::action('ManipulatePageController@index');
 		}  else {
-			dd('problem');
+			return Redirect::back()->withError('Incorrect. Please try again');
 		}
 
 	}

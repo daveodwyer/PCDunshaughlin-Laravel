@@ -2,12 +2,11 @@
 
     @section('content')
         <div id="generic-main" class="container">
+            <h1>Contact Us</h1>
+            <div id="error-cont"><ol></ol></div>
 
-            <!-- <form class="form-horizontal"> -->
-            {{ Form::open(array('action' => array('contact.store'), 'id' => 'contact-form', 'class' => 'form-horizontal' ) ) }}
+            {{ Form::open(array('action' => array('contact.store'), 'id' => 'contact-form' ) ) }}
                 <fieldset>
-
-                    <h1>Contact Us</h1>
 
                     <!-- Text input-->
                     <div class="form-group">

@@ -1,3 +1,5 @@
+@import url(http://fonts.googleapis.com/css?family=Noto+Sans:400,700,700italic);
+
 @media (max-width: 767px) {
     .navbar-header { padding: 5px 0 20px 0;}
 
@@ -94,6 +96,8 @@ border-bottom: 1px solid #e5e5e5;
 
 body {
   background: #efefef;
+  font-family: 'Noto Sans', sans-serif;
+
 }
 
 #footer {
@@ -140,4 +144,15 @@ table td {
     border: 1px solid #ddd;
     padding: .8em;
     line-height: 1.3em;
+}
+
+#contact-form .error, #error-cont .error {
+    display: block;
+    color: #ff0000;
+    margin: 3px 3px;
+    font-weight: normal;
+}
+
+#error-cont {
+    margin: 10px;
 }
