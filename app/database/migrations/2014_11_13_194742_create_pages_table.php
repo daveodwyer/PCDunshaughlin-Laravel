@@ -20,7 +20,8 @@ class CreatePagesTable extends Migration {
 			$table->string('view');
 			$table->string('path');
 
-			$table->timestamps();
+			$table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
+			$table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
 		});
 
 		// Insert some stuff
